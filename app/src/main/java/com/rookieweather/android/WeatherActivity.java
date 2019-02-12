@@ -1,5 +1,6 @@
 package com.rookieweather.android;
 
+import android.content.Intent;
 import android.content.PeriodicSync;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.rookieweather.android.gson.Forecast;
 import com.rookieweather.android.gson.Weather;
+import com.rookieweather.android.service.AutoUpdateService;
 import com.rookieweather.android.util.HttpUtil;
 import com.rookieweather.android.util.Utility;
 
@@ -177,6 +179,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     //处理、展示weather中的数据
     private void showWeatherInfo(Weather weather){
+
         String cityName = weather.basic.cityName;
         String updateTime = weather.basic.update.updateTime.split(" ")[1];
         String degree = weather.now.temperature + "℃";
@@ -205,5 +208,7 @@ public class WeatherActivity extends AppCompatActivity {
         CarWash.setText(carWash);
         Sport.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
