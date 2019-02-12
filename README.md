@@ -1,9 +1,9 @@
 # rookieweather
 
-Personal weather forecast APP.\n
-Rookie weather could view weather information for cities in China.\n
-Third-party dependencies used:\n
-  OKHttp\n
-  Litepal\n
-  Gson\n
-  Glide
+Personal weather forecast APP. <br>
+Rookie weather could view weather information for cities in China. <br>
+Third-party dependencies used: <br>
+  OKHttp <br>
+  Litepal <br>
+  Gson <br>
+  Glide <br>
