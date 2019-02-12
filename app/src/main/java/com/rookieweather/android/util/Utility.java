@@ -3,9 +3,11 @@ package com.rookieweather.android.util;
 import android.text.TextUtils;
 
 
+import com.google.gson.Gson;
 import com.rookieweather.android.db.City;
 import com.rookieweather.android.db.County;
 import com.rookieweather.android.db.Province;
+import com.rookieweather.android.gson.Weather;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -70,5 +72,18 @@ public class Utility {
             }
         }
         return false;
+    }
+
+    //把返回的天气数据解析成weather实体类
+    public static Weather handleweatherResponse(String response){
+        try{
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weatherContent, Weather.class);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }
